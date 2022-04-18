@@ -34,20 +34,16 @@ def make_gif():
     gifs = []
     pngs = glob.glob(r"screenshot\*.png")
     random_char = "ABCDEFGHIJKLMNOPQRSTUVWKYZabcdefghijklmnopqrstuvwxyz0123456789"
-    i, j = 0, 4
-    while j <= len(pngs):
-        frames = []
-        filerange = list(range(i, j))
-        for file in filerange:
-            new_frame = Image.open(pngs[file])
-            frames.append(new_frame)
-        filerange.reverse()
-        for fileR in filerange:
-            new_frame = Image.open(pngs[fileR])
-            frames.append(new_frame)
-        gifs.append(frames)
-        i += 4
-        j += 4
+    frames = []
+    filerange = list(range(0, folder_num))
+    for file in filerange:
+        new_frame = Image.open(pngs[file])
+        frames.append(new_frame)
+    filerange.reverse()
+    for fileR in filerange:
+        new_frame = Image.open(pngs[fileR])
+        frames.append(new_frame)
+    gifs.append(frames)
 
     for m in range(0, len(gifs)):
         filename = ""
